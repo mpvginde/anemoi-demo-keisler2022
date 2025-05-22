@@ -1,0 +1,13 @@
+# python
+__pycache__/
+
+# Environments
+venv
+
+# Anemoi source code
+anemoi
+
+# Datasets
+*zarr
+
+

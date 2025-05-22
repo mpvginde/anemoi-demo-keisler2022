@@ -1,0 +1,57 @@
+build:
+  group_by: daily
+  variable_naming: param_levelist
+dates:
+  end: '1979-01-01T23:00:00'
+  frequency: 3h
+  start: '1979-01-01T00:00:00'
+description: Dataset as used in the Keisler 2020 pre-print
+input:
+  join:
+  - repeated-dates:
+      mode: constant
+      source:
+        xarray-zarr:
+          options:
+            storage_options:
+              token: anon
+          param:
+          - geopotential_at_surface
+          - land_sea_mask
+          url: gs://weatherbench2/datasets/era5/1959-2022-1h-360x181_equiangular_with_poles_conservative.zarr
+  - xarray-zarr:
+      level:
+      - 50
+      - 100
+      - 150
+      - 200
+      - 250
+      - 300
+      - 400
+      - 500
+      - 600
+      - 700
+      - 850
+      - 925
+      - 1000
+      options:
+        storage_options:
+          token: anon
+      param:
+      - temperature
+      - u_component_of_wind
+      - geopotential
+      - vertical_velocity
+      - specific_humidity
+      url: gs://weatherbench2/datasets/era5/1959-2022-1h-360x181_equiangular_with_poles_conservative.zarr
+  - forcings:
+      param:
+      - cos_latitude
+      - cos_longitude
+      - sin_latitude
+      - sin_longitude
+      - julian_day
+      - insolation
+      template: ${input.join.1.xarray-zarr}
+name: keisler-era5-gs-weatherbench2-1p0d-1979-1979-v0
+resolution: 1p0 degree
