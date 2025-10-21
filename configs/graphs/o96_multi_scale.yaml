@@ -1,0 +1,66 @@
+overwrite: True
+
+data: &data "data"
+hidden: &hidden "hidden"
+
+attributes: 
+  nodes: &attributes_nodes
+    area_weight:
+      _target_: anemoi.graphs.nodes.attributes.SphericalAreaWeights # options: Area, Uniform
+      norm: unit-max # options: l1, l2, unit-max, unit-sum, unit-std
+      fill_value: 0
+  edges: &attributes_edges
+    edge_length:
+      _target_: anemoi.graphs.edges.attributes.EdgeLength
+      norm: unit-std
+    edge_dirs:
+      _target_: anemoi.graphs.edges.attributes.EdgeDirection
+      norm: unit-std
+
+nodes:
+  # Data nodes
+  data:
+    node_builder:
+      _target_: anemoi.graphs.nodes.AnemoiDatasetNodes # options: AnemoiDatasetNodes, NPZFileNodes
+      dataset: output/datasets/era5-o96-1979-2023-6h.zarr
+    attributes: *attributes_nodes
+  # Hidden nodes
+  hidden:
+    node_builder:
+      _target_: anemoi.graphs.nodes.TriNodes # options: AnemoiDatasetNodes, NPZFileNodes, TriNodes
+      resolution: &trinodes_res 5 # grid resolution for npz (o32, o48, ...)
+    attributes: *attributes_nodes
+
+edges:
+# Encoder configuration
+- source_name: *data
+  target_name: *hidden
+  edge_builders:
+  - _target_: anemoi.graphs.edges.CutOffEdges # options: KNNEdges, CutOffEdges
+    cutoff_factor: 0.6 # only for cutoff method
+    source_mask_attr_name: null
+    target_mask_attr_name: null
+  attributes: *attributes_edges
+  # Processor configuration
+- source_name: *hidden
+  target_name: *hidden
+  edge_builders:
+  - _target_: anemoi.graphs.edges.MultiScaleEdges
+    x_hops: 1
+    scale_resolutions: *trinodes_res
+    source_mask_attr_name: null
+    target_mask_attr_name: null
+  attributes: *attributes_edges
+  # Decoder configuration
+- source_name: *hidden
+  target_name: *data
+  edge_builders:
+  - _target_: anemoi.graphs.edges.KNNEdges # options: KNNEdges, CutOffEdges
+    num_nearest_neighbours: 3 # only for knn method
+    source_mask_attr_name: null
+    target_mask_attr_name: null
+  attributes: *attributes_edges
+
+
+
+post_processors: []
