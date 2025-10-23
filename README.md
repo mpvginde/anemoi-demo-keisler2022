@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ```
 
 Note the `requirements.txt` includes `ipykernel`, which allows you to run notebooks
-from VS Code. If you prefer to use the classic Jupyter interface, myou can install it
+from VS Code. If you prefer to use the classic Jupyter interface, you can install it
 manually with:
 
 ```bash
@@ -53,7 +53,7 @@ pip install jupyter
 VS Code provides an integrated experience for running and editing notebooks.
 You can follow the official [VS Code Jupyter documentation](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), but in short:
 
-1, Open the cloned folder in VS Code.
+1. Open the cloned folder in VS Code.
 2. Make sure the Python and Jupyter extensions are installed.
 3. When prompted, select your virtual environment (venv) as the kernel.
 4. Open notebooks sequentially, starting with `01_create_dataset.ipynb`.
@@ -66,4 +66,4 @@ If you prefer the classic Jupyter interface, run:
 jupyter notebook
 ```
 
-Then open notebooks sequentially, starting with `01_create_dataset.ipynb`.
+Then open the notebooks sequentially, starting with `01_create_dataset.ipynb`.
