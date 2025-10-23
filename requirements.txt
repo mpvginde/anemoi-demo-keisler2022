@@ -3,3 +3,4 @@ gcsfs==2025.9.0
 earthkit-data==0.13.9
 matplotlib==3.10.6
 cartopy==0.25.0
+ipykernel
