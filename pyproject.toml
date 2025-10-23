@@ -10,11 +10,12 @@ requires-python = ">=3.12"
 dependencies = [
     "anemoi-datasets>=0.5.26",
     "anemoi-env>=2025.10.1",
-    "anemoi-graphs>=0.6.6",
+    "anemoi-graphs[hex]==0.6.6",
     "anemoi-training>=0.6.6,<0.7.0",
     "boto3>=1.40.56",
     "cartopy>=0.25.0",
     "cdsapi>=0.7.6",
+    "earthkit-plots>=0.5.1",
     "eccodes==2.39.1",
     "ecmwf-api-client>=1.6.5",
     "gcsfs>=2025.9.0",
@@ -40,7 +41,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [[tool.uv.index]]
-name = "pytorch-cuda"
+name = "pytorch-cu121"
 url = "https://download.pytorch.org/whl/cu121"
 explicit = true
 

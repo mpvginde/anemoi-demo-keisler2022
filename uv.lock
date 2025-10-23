@@ -7,6 +7,20 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "adjusttext"
+version = "1.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4c/d4/6585f3b6fdb75648bca294664af4becc8aa2fb3fb08f4e4e9fd27e10d773/adjusttext-1.3.0.tar.gz", hash = "sha256:4ab75cd4453af4828876ac3e964f2c49be642ea834f0c1f7449558d5f12cbca1", size = 15724 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/53/1c/8feedd607cc14c5df9aef74fe3af9a99bf660743b842a9b5b1865326b4aa/adjustText-1.3.0-py3-none-any.whl", hash = "sha256:da23d7b24b6db5ffa039bb136bfa556207365e32f48ac74b07ad26dd485bc691", size = 13154 },
+]
+
+[[package]]
 name = "aiohappyeyeballs"
 version = "2.6.1"
 source = { registry = "https://pypi.org/simple" }
@@ -154,11 +168,12 @@ source = { editable = "." }
 dependencies = [
     { name = "anemoi-datasets" },
     { name = "anemoi-env" },
-    { name = "anemoi-graphs" },
+    { name = "anemoi-graphs", extra = ["hex"] },
     { name = "anemoi-training" },
     { name = "boto3" },
     { name = "cartopy" },
     { name = "cdsapi" },
+    { name = "earthkit-plots" },
     { name = "eccodes" },
     { name = "ecmwf-api-client" },
     { name = "gcsfs" },
@@ -180,11 +195,12 @@ dev = [
 requires-dist = [
     { name = "anemoi-datasets", specifier = ">=0.5.26" },
     { name = "anemoi-env", specifier = ">=2025.10.1" },
-    { name = "anemoi-graphs", specifier = ">=0.6.6" },
+    { name = "anemoi-graphs", extras = ["hex"], specifier = "==0.6.6" },
     { name = "anemoi-training", specifier = ">=0.6.6,<0.7.0" },
     { name = "boto3", specifier = ">=1.40.56" },
     { name = "cartopy", specifier = ">=0.25.0" },
     { name = "cdsapi", specifier = ">=0.7.6" },
+    { name = "earthkit-plots", specifier = ">=0.5.1" },
     { name = "eccodes", specifier = "==2.39.1" },
     { name = "ecmwf-api-client", specifier = ">=1.6.5" },
     { name = "gcsfs", specifier = ">=2025.9.0" },
@@ -223,7 +239,7 @@ wheels = [
 
 [[package]]
 name = "anemoi-graphs"
-version = "0.7.0"
+version = "0.6.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anemoi-utils" },
@@ -238,9 +254,14 @@ dependencies = [
     { name = "torch-geometric" },
     { name = "typeguard" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c6/c0/590a7add54c177ba26f5dc02403015a4f552576fb5baac4e553676e3e227/anemoi_graphs-0.7.0.tar.gz", hash = "sha256:f96355ec17a9904a16b7a16f2572b98a2c07f545b98aec18de5c1d8381f3009a", size = 1646419 }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/db/02aaebf5491c839bce37aa3170275f9224c4560ddf835ed70c116afa4dcd/anemoi_graphs-0.6.6.tar.gz", hash = "sha256:d24627e5feff5add5b130b59a038cf7dca0f3e14a9606dcfbb884038ae7db708", size = 1646460 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/05/ff/9bd1130b3ccd18c1cfa80d3160ca11e7d31bde6e10cbd06819b7145565e4/anemoi_graphs-0.7.0-py3-none-any.whl", hash = "sha256:076d838de4e5cc40edfae18f9ab837b76765ddb7265536b462601f610f7b7c4a", size = 97776 },
+    { url = "https://files.pythonhosted.org/packages/95/e2/23b7aa34da2a390e501d07a75c803cc84713f112d5d041803e51b27816d0/anemoi_graphs-0.6.6-py3-none-any.whl", hash = "sha256:29fbe28cfc2ee41305b1ac92a58a546daaccfcbfd93f574a3f5a9a85ae987d08", size = 98212 },
+]
+
+[package.optional-dependencies]
+hex = [
+    { name = "h3" },
 ]
 
 [[package]]
@@ -1165,6 +1186,36 @@ wheels = [
 ]
 
 [[package]]
+name = "earthkit-plots"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "adjusttext" },
+    { name = "cartopy" },
+    { name = "earthkit-data" },
+    { name = "earthkit-plots-default-styles" },
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pint" },
+    { name = "plotly" },
+    { name = "pyyaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c9/06/efd484eaa436c28a82a278af0f6f4cdda390726a922be694e096cfc824e0/earthkit_plots-0.5.1.tar.gz", hash = "sha256:36f593f18a89f24e7d78884a103bcab44503b56215ba21e837f5b4c8f8f08c0e", size = 48483149 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ce/f9/9b5362d4e0e260aef6678687123f9a28a58b01c1b8cefa628210075233dd/earthkit_plots-0.5.1-py3-none-any.whl", hash = "sha256:a7bf92daef22b3530ae05deb654d1dbfca1c134f894d11936dbbadf33a212d8a", size = 2692480 },
+]
+
+[[package]]
+name = "earthkit-plots-default-styles"
+version = "0.1.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1d/6b/e3de41b0033253eb6fc14da8230f210c6c5d39b02cd48bdc84f7fa2ac1de/earthkit_plots_default_styles-0.1.3.tar.gz", hash = "sha256:a9b9b7bcca0456dc0d678328a02da9000dbded2b6cd7aac3c283bda852fddb9b", size = 16254 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e9/67/5569a994dfd47ff02af9c64b666e33c9cf7c1bbfee1292b99c5d61bb9fc2/earthkit_plots_default_styles-0.1.3-py3-none-any.whl", hash = "sha256:676560092a1e2956ec396b9536cd7256d5e7eb893db6e044c127341ee5dc15b8", size = 19651 },
+]
+
+[[package]]
 name = "earthkit-regrid"
 version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1795,6 +1846,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz", hash = "sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1", size = 101250 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl", hash = "sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86", size = 37515 },
+]
+
+[[package]]
+name = "h3"
+version = "3.7.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/8f/8d/b10085f4f6ef7d4cb126a2e0eaf9e907e89cf99965b6578a3d1666f1435e/h3-3.7.7.tar.gz", hash = "sha256:33d141c3cef0725a881771fd8cb80c06a0db84a6e4ca5c647ce095ae07c61e94", size = 192246 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5e/6f/43c2a6a2bfd9fcc058b124500907f258ca8f81dbad268f001243e4a0fa70/h3-3.7.7-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:51c2f63ef5a57e4b18ebc9c0eb56656433e280ec45ab487a514127bb6e7d6a1f", size = 1047415 },
+    { url = "https://files.pythonhosted.org/packages/90/47/138ec5a36f369c2b14df3b93fe4be7576391c79bae55b9088979ba0f9186/h3-3.7.7-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:4d6e38dea47c220d9802af8e8bebc806f9f39358aee07b736191ff21e2c9921d", size = 990816 },
+    { url = "https://files.pythonhosted.org/packages/0a/08/607bff5c46a58f21563301e51bda8808d81a7271dd8d83006f57d7e862ea/h3-3.7.7-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e408342e94f558802a97bfcbe1baae2af8b1fd926ad9041d970ff9dbd0502099", size = 1161566 },
+    { url = "https://files.pythonhosted.org/packages/3e/fc/a03291173eae24cbeda2d2660e07cf9e3694543f29c7d795e4c4cd3b5369/h3-3.7.7-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:644c3c84585aa4df62e81bc54fd305c4d6686324731de230b0ddbd7036ed172c", size = 1154396 },
+    { url = "https://files.pythonhosted.org/packages/f5/81/60f8dfd21c6c00d10ea347432e9c1b1bfd8f854a3506e554f0587b59a9e7/h3-3.7.7-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:bb4a3d5e82d0c89512dc71b4eac17976a29be29da250ba76bc94bc5b9e824f0e", size = 1174981 },
+    { url = "https://files.pythonhosted.org/packages/4c/29/f516cf77436e96bf601715c39b9f801b93889060b39428aa7056ae2d65b6/h3-3.7.7-cp312-cp312-win_amd64.whl", hash = "sha256:2ccff5f02589e80202597ed0b9f61ebd114e262e7dd0fe88059298602898192f", size = 931416 },
 ]
 
 [[package]]

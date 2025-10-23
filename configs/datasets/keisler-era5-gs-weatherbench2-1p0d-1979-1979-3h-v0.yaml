@@ -3,9 +3,9 @@ build:
   group_by: daily
   variable_naming: param_levelist
 dates:
-  start: 1979-01-01T00:00
+  end: '1979-01-02T00:00:00'
   frequency: 3h
-  end: 2021-12-31T18:00
+  start: '1979-01-01T00:00:00'
 description: Dataset as used in the Keisler 2022 pre-print
 input:
   join:

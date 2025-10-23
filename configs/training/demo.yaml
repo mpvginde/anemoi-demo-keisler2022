@@ -24,3 +24,12 @@ dataloader:
   batch_size:
     training: 1
     validation: 1
+
+
+diagnostics:
+  log:
+    mlflow:
+      enabled: True
+      offline: True
+      tracking_uri: null
+      experiment_name: 'aiwcas2025-anemoi-demo'
