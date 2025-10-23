@@ -16,8 +16,11 @@ It is designed to help users:
 * Explore data ingestion, model training, and evaluation pipelines in a reproducible way.
 * Serve as an onboarding and educational tool for new users within the Anemoi ecosystem.
 
-Note: this is not an exact reproduction of Keisler’s model. Instead, it’s a simplified demo
-illustrating the principles, workflow, and integration possibilities offered by Anemoi.
+> [!NOTE]
+> Note: this is not an exact reproduction of Keisler’s model. Instead, it’s a simplified demo
+illustrating the principles, workflow, and integration possibilities offered by Anemoi. It is 
+a work in progress, so not all parts of the demo (notably the training) are focused on Keisler (2020) yet.
+
 
 ## Getting started
 
@@ -27,8 +30,6 @@ Clone the repository with:
 git clone https://github.com/mpvginde/anemoi-demo-keisler2022.git
 cd anemoi-demo-keisler2022
 ```
-
-### Install and set up the environment with `uv`
 
 This project uses [uv](https://docs.astral.sh/uv/) to manage environments and dependencies.
 Make sure you have `uv` installed (see [installation instructions](https://docs.astral.sh/uv/getting-started/)).
