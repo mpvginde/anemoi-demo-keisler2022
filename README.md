@@ -1,29 +1,69 @@
-# Anemoi onboarding with Keisler 2022
+# Learn Anemoi with Keisler (2022)
 
-## 💡 Main idea
+A lightweight demo introducing the [Anemoi Framework](https://github.com/ecmwf/anemoi) 
+and inspired by [Keisler (2022)](https://arxiv.org/abs/2202.07575), the seminal work 
+that applied Graph Neural Networks (GNNs) to global weather forecasting.
 
-We propose to build an **educational** and **onboarding** demo project within the Anemoi framework by **reproducing** the model presented in the seminal work of **Keisler 2022**. This demo project will provide a practical, step-by-step pipeline: from dataset preparation to model verification and visualization, specifically tailored for teaching and training purposes.
+## Objective
 
-In short:
-- Create an accessible and fully documented demo repository demonstrating the **complete MLWP pipeline using Anemoi**.
-- Enhance **understanding** of the **scientific principles** underlying graph-based MLWP models.
-- **Simplify** the **onboarding** experience for new users by showcasing a clear, real-world example.
-- Provide **educational material** suitable for lectures and practical exercises for students learning MLWP
+This repository provides a hands-on demonstration of how to use the Anemoi framework to
+reproduce and extend key ideas from Keisler (2022): Forecasting Global Weather with Graph
+Neural Networks.
 
-## ⛩️ Philosophy
-- The project must offer a pleasant introduction to MLWP and invite users to think more deeply about the MLWP problem statement and the choices made when building a MLWP-model.
-- Bridge the gap between `anemoi-docs` and `anemoi-configs` on the one hand and the different `anemoi` packages on the other hand.
-- Explain the scientific and technical choices made
-- Interact as much as possible with `anemoi-docs` and other existing literature. 
+It is designed to help users:
+- Learn how to structure, configure, and run ML experiments with Anemoi.
+- Explore data ingestion, model training, and evaluation pipelines in a reproducible way.
+- Serve as an onboarding and educational tool for new users within the Anemoi ecosystem.
 
-## 📱 Slack channel
-` #anemoi-demo-keisler2022`
+Note: this is not an exact reproduction of Keisler’s model. Instead, it’s a simplified demo
+illustrating the principles, workflow, and integration possibilities offered by Anemoi.
 
-## 🧑‍🤝‍🧑 Meetings
-Irregular for now.  
-When needed.
+## Getting started
 
-## 🏗️ Building blocks
-More info on the building blocks can be found [here](https://tasty-capricorn-1ff.notion.site/anemoi-onboarding-with-Keisler-2022-1c86f5421e0f80e3bedcf4f9b9caadb3)
+Clone the repository with:
 
+```bash
+git clone https://github.com/mpvginde/anemoi-demo-keisler2022.git
+cd anemoi-demo-keisler2022
+```
 
+Create and activate a virtual environment using a recent version of Python:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Note the `requirements.txt` includes `ipykernel`, which allows you to run notebooks
+from VS Code. If you prefer to use the classic Jupyter interface, you can install it
+manually with:
+
+```bash
+pip install jupyter
+```
+
+### Option 1 — Using VS Code (recommended)
+
+VS Code provides an integrated experience for running and editing notebooks.
+You can follow the official [VS Code Jupyter documentation](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), but in short:
+
+1. Open the cloned folder in VS Code.
+2. Make sure the Python and Jupyter extensions are installed.
+3. When prompted, select your virtual environment (venv) as the kernel.
+4. Open notebooks sequentially, starting with `01_create_dataset.ipynb`.
+
+### Option 2 — Using Jupyter Notebook (browser interface)
+  
+If you prefer the classic Jupyter interface, run:
+
+```bash
+jupyter notebook
+```
+
+Then open the notebooks sequentially, starting with `01_create_dataset.ipynb`.
