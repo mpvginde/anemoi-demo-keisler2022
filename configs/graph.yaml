@@ -38,11 +38,3 @@ edges:
   attributes:
     edge_length: *id001
     edge_direction: *id002
-- source_name: processor
-  target_name: data
-  edge_builder:
-    _target_: anemoi.graphs.edges.KNNEdges
-    num_nearest_neighbours: 3
-  attributes:
-    edge_length: *id001
-    edge_direction: *id002
