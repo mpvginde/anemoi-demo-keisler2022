@@ -1,0 +1,8 @@
+checkpoint: /scratch/mch/fzanetta/projects/anemoi-demo-keisler2022/output/training/checkpoint/dfa1cd5d30aa4a1db2aa7404f8a33e72/inference-last.ckpt
+date: 2022-09-01T00:00
+input:
+  test:
+    use_original_paths: true
+output:
+  grib:
+    path: /scratch/mch/fzanetta/projects/anemoi-demo-keisler2022/output/inference/{date}.grib

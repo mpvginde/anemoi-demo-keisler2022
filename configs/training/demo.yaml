@@ -1,0 +1,35 @@
+config_validation: true
+defaults:
+- data: zarr
+- dataloader: native_grid
+- diagnostics: evaluation
+- datamodule: single
+- hardware: slurm
+- graph: existing # we use the graph we created beforehand
+- model: graphtransformer # compute attention on neighbouring nodes on graphs using also edges attributes
+- training: default
+- _self_
+
+
+hardware:
+  files:
+    dataset: aifs-ea-an-oper-0001-mars-o96-1979-2022-6h-v6.zarr
+    graph: o96_multi_scale.pt
+  paths:
+    data: /scratch/mch/fzanetta/projects/anemoi-demo-keisler2022/output/datasets/
+    graph: /scratch/mch/fzanetta/projects/anemoi-demo-keisler2022/output/graphs/
+    output: /scratch/mch/fzanetta/projects/anemoi-demo-keisler2022/output/training/
+
+dataloader:
+  batch_size:
+    training: 1
+    validation: 1
+
+
+diagnostics:
+  log:
+    mlflow:
+      enabled: True
+      offline: True
+      tracking_uri: null
+      experiment_name: 'aiwcas2025-anemoi-demo'
