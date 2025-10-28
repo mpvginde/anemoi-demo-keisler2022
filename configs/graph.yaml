@@ -1,0 +1,40 @@
+nodes:
+  data:
+    node_builder:
+      _target_: anemoi.graphs.nodes.AnemoiDatasetNodes
+      dataset: datasets/keisler-era5-gs-weatherbench2-1p0d-1979-1979-3h-v0.zarr
+    attributes:
+      weights:
+        _target_: anemoi.graphs.nodes.attributes.CosineLatWeightedAttribute
+        norm: unit-max
+  processor:
+    node_builder:
+      _target_: anemoi.graphs.nodes.HexNodes
+      resolution: 2
+edges:
+- source_name: data
+  target_name: processor
+  edge_builder:
+    _target_: anemoi.graphs.edges.KNNEdges
+    num_nearest_neighbours: 12
+  attributes:
+    edge_length: &id001
+      _target_: anemoi.graphs.edges.attributes.EdgeLength
+    edge_direction: &id002
+      _target_: anemoi.graphs.edges.attributes.EdgeDirection
+- source_name: processor
+  target_name: processor
+  edge_builder:
+    _target_: anemoi.graphs.edges.KNNEdges
+    num_nearest_neighbours: 6
+  attributes:
+    edge_length: *id001
+    edge_direction: *id002
+- source_name: processor
+  target_name: data
+  edge_builder:
+    _target_: anemoi.graphs.edges.KNNEdges
+    num_nearest_neighbours: 3
+  attributes:
+    edge_length: *id001
+    edge_direction: *id002
